@@ -313,6 +313,12 @@ ls.bindHolder((holder,data,position)=> {
             if (clsName == null || clsName.trim().isEmpty()) {
                 toast("当前应用无需无障碍权限");
             } else {
+                // 安全提示：拼接外部数据进 shell 命令前应校验包名/类名格式，防止命令注入
+                let pkgNamePattern = /^[a-zA-Z][a-zA-Z0-9_.]*$/;
+                if (!pkgNamePattern.test(data.pkgName) || !pkgNamePattern.test(clsName)) {
+                    toast("包名或类名格式异常，已拒绝执行");
+                    return;
+                }
                 $tip.show(data.appName,"点击确定开始为应用授权无障碍权限：\n\n应用:"+data.appName+"\n包名:"+data.pkgName+"\n类名:\n"+clsName,()=> {
                     $szk.exe("settings put secure enabled_accessibility_services "+data.pkgName+"/"+clsName,(info)=> {
                         $log.d(info);

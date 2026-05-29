@@ -174,7 +174,7 @@ ui.id("input").click((view)=> {
     //判断ApiKey是否是空的
     let apiKey = storage.get("apiKey","");
     if ($str.isEmpty(apiKey)) {
-        alert("ApiKey为空","请前往DeepSeek官网申请ApiKey后，点击右上角设置图标，配置ApiKey内容。\n类似于：sk-c4c165374f72bbf90f6326f 这样的字符串");
+        alert("ApiKey为空","请前往DeepSeek官网申请ApiKey后，点击右上角设置图标，配置ApiKey内容。\n类似于：sk-xxxx 这样的字符串");
         return null;
     }
     $tip.input("输入内容",(value)=> {

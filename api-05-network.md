@@ -18,6 +18,8 @@
 
 ## $http - HTTP网络请求
 
+> ⚠️ **安全提示**：生产环境中请始终使用 HTTPS 协议，避免明文传输敏感数据。以下示例中的 HTTP 链接仅用于本地测试。
+
 ### POST 请求（JSON）
 
 ```javascript
@@ -67,7 +69,7 @@ let res = $http.post({
     url: "https://api.example.com/endpoint",
     head: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer your_token_here",
+        "Authorization": "Bearer " + apiKey, // 从 $storage 或环境变量读取，切勿硬编码
         "X-Custom-Header": "value"
     },
     data: {
@@ -82,7 +84,7 @@ let res = $http.post({
 
 ```javascript
 let url = "https://api.deepseek.com/chat/completions";
-let apiKey = ""; // 填写你的 API Key，类似 "sk-xxxx"
+let apiKey = storage.get("apiKey", ""); // 从本地存储读取，切勿在代码中硬编码
 
 let res = $http.post({
     url: url,

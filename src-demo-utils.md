@@ -66,8 +66,8 @@ alert("AES解密结果", jiemiResult);
 ```javascript
 //AIGame 官方示例
 
-//准备一个长度为16的密钥
-let key = "ACSDFGHJUYDLOPSD";
+//使用随机生成的 16 位密钥，切勿硬编码
+let key = $crypt.aesKey();
 
 //准备需要加密的明文
 let text = "我是被加密的明文";
@@ -98,6 +98,8 @@ alert("AES解密结果", jiemiResult);
 
 
 ## $crypt-#U52a0#U5bc6#U7b97#U6cd5-01.#U5bf9#U79f0#U52a0#U5bc6-03.DES#U52a0#U5bc6
+
+> ⚠️ **安全警告**：DES 密钥长度仅 56 位，已被破解，不建议在生产环境中使用。请优先使用 AES。
 
 ```javascript
 //AIGame 官方示例
@@ -143,7 +145,7 @@ alert("DES解密",result2)
 
 
 //生成密钥对
-let keyPair = $crypt.generateKeyPair("RSA", 1024);
+let keyPair = $crypt.generateKeyPair("RSA", 2048);
 
 alert("RSA密钥信息", keyPair);
 
@@ -254,7 +256,7 @@ alert("MD5加密",result);
 
 
 //生成密钥对
-let keyPair = $crypt.generateKeyPair("DSA", 1024);
+let keyPair = $crypt.generateKeyPair("DSA", 2048);
 
 
 alert("DSA密钥信息", keyPair);

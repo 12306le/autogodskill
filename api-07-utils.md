@@ -133,7 +133,7 @@ alert("AES解密结果", decrypted);
 #### AES 加密
 
 ```javascript
-let key = "ACSDFGHJUYDLOPSD"; // 16 位密钥
+let key = $crypt.aesKey(); // 使用随机生成的 16 位密钥，切勿硬编码
 
 let encrypted = $crypt.jiami("我是被加密的明文", key, "AES", {
     input: "string",
@@ -149,6 +149,8 @@ alert("AES解密结果", decrypted);
 ```
 
 #### DES 加密
+
+> ⚠️ **安全警告**：DES 密钥长度仅 56 位，已被破解，不建议在生产环境中使用。请优先使用 AES。
 
 ```javascript
 let key = "ACSDFGHJ"; // 8 位密钥
@@ -170,7 +172,7 @@ alert("DES解密", decrypted);
 
 ```javascript
 // 生成密钥对
-let keyPair = $crypt.generateKeyPair("RSA", 1024);
+let keyPair = $crypt.generateKeyPair("RSA", 2048);
 alert("RSA密钥信息", keyPair);
 // keyPair.privateKey: 私钥
 // keyPair.publicKey: 公钥
@@ -227,7 +229,7 @@ alert("MD5加密", result);
 ### DSA 数字签名
 
 ```javascript
-let keyPair = $crypt.generateKeyPair("DSA", 1024);
+let keyPair = $crypt.generateKeyPair("DSA", 2048);
 
 // 签名（使用私钥）
 let signData = $crypt.sign("我是被签名的内容", keyPair.privateKey, "DSA", {

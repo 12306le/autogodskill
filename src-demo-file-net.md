@@ -565,7 +565,7 @@ let url = "https://api.deepseek.com/chat/completions";
 alert("注意","请到代码中填写ApiKey才能调用成功!");
 
 //自己填写key
-let apiKey = ""; //类似于"sk-m451xc526v394f82b90163272c577s"
+let apiKey = storage.get("apiKey", ""); // 从本地存储读取，切勿在代码中硬编码
 
 let res = $http.post({
     url: url,
@@ -622,7 +622,7 @@ alert("请求结果",res.str());
 ## $http-#U7f51#U7edc#U8bf7#U6c42-04.#U4e0b#U8f7d#U6587#U4ef6
 
 ```javascript
-let url = "https://pics0.baidu.com/feed/f11f3a292df5e0feee2783e88baf3fa75fdf727e.jpeg?token=4afc91463326e4f4a44e2cde691a54a0";
+let url = "https://example.com/sample-image.jpeg";
 let path = "/sdcard/美女.png";
 
 //异步下载
