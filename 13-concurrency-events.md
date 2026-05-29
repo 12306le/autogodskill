@@ -74,7 +74,7 @@ t1.interrupt();
 ```javascript
 let t1 = $thread.create(()=> {
     for (let i = 0; i < 10; i++) {
-        sleep("300");
+        sleep(300);
         log(t1.getName()+"==>"+i);
     }
     log(t1.getName()+"执行完毕");
@@ -97,7 +97,7 @@ t1.start();
 ```javascript
 let t1 = $thread.create("线程名称",()=> {
     for (let i = 0; i < 10; i++) {
-        sleep("300");
+        sleep(300);
         log(t1.getName()+"==>"+i);
     }
     log(t1.getName()+"执行完毕");
@@ -180,7 +180,7 @@ t1.start();
 
 
 ```javascript
-//关闭循环器
+//检查循环器是否存在
 let exists = $thread.hasLoop("循环1号");
 ```
 
