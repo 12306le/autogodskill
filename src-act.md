@@ -61,7 +61,7 @@ let selector = $act.selector() // 创建UI选择器
 //(2)选中节点
 let node = selector.findFirst(); // 查找一个节点
 //其实上面的代码可以直接写成：
-let node = $act.selector()
+node = $act.selector()
      .text("登录") //筛选文本是"登录"的元素
      .cls("android.widget.Button") //筛选类名为"android.widget.Button"的元素
      .pkg("org.aigame.pro") //筛选包名为"org.aigame.pro"的元素
@@ -71,7 +71,7 @@ let node = $act.selector()
 
 ---
 
-# 
+# $adapt - 适配器
 
 - 更新时间:2026-01-30 19:32:50
 
